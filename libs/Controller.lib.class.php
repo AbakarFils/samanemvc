@@ -14,5 +14,19 @@ class Controller{
         public function __construct(){
             $this->view = new View();
         }
+    /**
+     * permet de charger un model
+     * @param $name le nom du model à charger
+     */
+    function  loadModel($name)
+    {
+        $file ='model/'.$name.'.php'; //spécification du model dans le dossier model.
+            require_once($file);
+            if(!isset($this->$name))
+            {
+                $this->$name =new $name;
+            }
     }
+    }
+
 ?>
